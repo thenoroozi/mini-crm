@@ -1,19 +1,5 @@
-import { useState } from 'react'
+import { AppRouter } from './router'
 
-
-function App() {
-   const [count, setCount] = useState(0)
-
-   return (
-      <>
-
-         <div className="text-3xl font-bold border">
-            <button onClick={() => setCount((count) => count + 1)}>
-               count is {count}
-            </button>
-         </div>
-      </>
-   )
+export default function App() {
+  return <AppRouter />
 }
-
-export default App
