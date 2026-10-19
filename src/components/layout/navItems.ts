@@ -12,11 +12,11 @@ export type NavItem = {
 }
 
 const overview: NavItem = {
-  label: 'Overview',
+  label: 'Dashboard',
   mobileLabel: 'Home',
   to: '/',
   icon: LayoutDashboard,
-  title: 'Overview',
+  title: 'Dashboard',
   subtitle: 'Here’s what’s happening with your customers today.',
 }
 

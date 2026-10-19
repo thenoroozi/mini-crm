@@ -19,7 +19,7 @@ export function AppRouter() {
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route index element={<Placeholder name="Overview" />} />
+          <Route index element={<Placeholder name="Dashboard" />} />
           <Route path="customers" element={<CustomersPage />} />
           <Route path="customers/:id" element={<Placeholder name="Customer detail" />} />
           <Route path="settings" element={<Placeholder name="Settings" />} />
