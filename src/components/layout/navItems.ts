@@ -55,10 +55,7 @@ export const settings: NavItem = {
   subtitle: 'Manage your profile and preferences.',
 }
 
-export const sidebarSections = [
-  { heading: 'MAIN', items: [overview, customers] },
-  { heading: 'WORKSPACE', items: [inbox, analytics] },
-]
+export const sidebarItems = [overview, customers, inbox, analytics, settings]
 
 export const bottomNav = [overview, inbox, customers, analytics, settings]
 

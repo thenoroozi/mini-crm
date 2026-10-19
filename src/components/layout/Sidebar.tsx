@@ -1,81 +1,84 @@
-import { NavLink } from 'react-router'
-import { Badge } from '../ui/Badge'
-import { cn } from '../../lib/cn'
-import { Logo } from './Logo'
-import { settings, sidebarSections } from './navItems'
-import type { NavItem } from './navItems'
 import { LogOut } from 'lucide-react'
+import { NavLink } from 'react-router'
 import { useAuth } from '../../features/auth/useAuth'
+import { cn } from '../../lib/cn'
+import { Avatar } from '../ui/Avatar'
+import { Logo } from './Logo'
+import { sidebarItems } from './navItems'
+import type { NavItem } from './navItems'
+
+const itemBase = 'flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium'
 
 function SidebarItem({ item }: { item: NavItem }) {
-   const Icon = item.icon
-   const base = 'flex h-10 items-center gap-3 rounded-lg px-3 text-[13px] font-medium'
+  const Icon = item.icon
 
-   if (item.disabled) {
-      return (
-         <span aria-disabled="true" className={cn(base, 'cursor-not-allowed text-muted/60')}>
-            <Icon className="size-[18px]" aria-hidden />
-            {item.label}
-            <Badge className="ml-auto" tone='success'>Soon</Badge>
-         </span>
-      )
-   }
+  if (item.disabled) {
+    return (
+      <span aria-disabled="true" className={cn(itemBase, 'cursor-not-allowed text-slate-500')}>
+        <Icon className="size-5" aria-hidden />
+        {item.label}
+        <span className="ml-auto rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-green-400">
+          Soon
+        </span>
+      </span>
+    )
+  }
 
-   return (
-      <NavLink
-         to={item.to}
-         end={item.to === '/'}
-         className={({ isActive }) =>
-            cn(
-               base,
-               'transition-colors',
-               isActive ? 'bg-primary-soft font-semibold text-primary' : 'text-ink hover:bg-canvas',
-            )
-         }
-      >
-         <Icon className="size-[18px]" aria-hidden />
-         {item.label}
-      </NavLink>
-   )
+  return (
+    <NavLink
+      to={item.to}
+      end={item.to === '/'}
+      className={({ isActive }) =>
+        cn(
+          itemBase,
+          'transition-colors',
+          isActive
+            ? 'bg-primary text-white shadow-lg shadow-primary/30'
+            : 'text-slate-300 hover:bg-white/5 hover:text-white',
+        )
+      }
+    >
+      <Icon className="size-5" aria-hidden />
+      {item.label}
+    </NavLink>
+  )
 }
 
 export function Sidebar() {
-   const { signOut } = useAuth()
+  const { user, signOut } = useAuth()
+  const name = String(user?.user_metadata?.full_name ?? user?.email ?? 'User')
 
-   return (
-      <aside className="fixed inset-y-0 left-0 z-20 hidden w-[188px] flex-col border-r border-line bg-surface px-3 py-6 lg:flex xl:w-[246px] xl:px-4">
-         <div className="px-2">
-            <Logo />
-         </div>
+  return (
+    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[188px] flex-col bg-slate-900 px-3 py-6 lg:flex xl:w-[246px] xl:px-4">
+      <div className="px-2">
+        <Logo tone="dark" />
+      </div>
 
-         <nav aria-label="Main" className="mt-8 flex flex-1 flex-col gap-6 overflow-y-auto">
-            {sidebarSections.map((section) => (
-               <div key={section.heading}>
-                  <p className="mb-2 px-3 text-[10px] font-bold tracking-wider text-muted/70">
-                     {section.heading}
-                  </p>
-                  <ul className="flex flex-col gap-1">
-                     {section.items.map((item) => (
-                        <li key={item.to}>
-                           <SidebarItem item={item} />
-                        </li>
-                     ))}
-                  </ul>
-               </div>
-            ))}
-         </nav>
+      <nav aria-label="Main" className="mt-8 flex-1 overflow-y-auto">
+        <ul className="flex flex-col gap-1.5">
+          {sidebarItems.map((item) => (
+            <li key={item.to}>
+              <SidebarItem item={item} />
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-         <div className="flex flex-col gap-1 border-t border-line pt-4">
-            <SidebarItem item={settings} />
-            <button
-               type="button"
-               onClick={() => void signOut()}
-               className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-[13px] font-medium text-ink transition-colors hover:bg-canvas"
-            >
-               <LogOut className="size-[18px]" aria-hidden />
-               Sign out
-            </button>
-         </div>
-      </aside>
-   )
+      <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-2.5">
+        <Avatar name={name} />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-white">{name}</p>
+          <p className="truncate text-xs text-slate-400">{user?.email}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => void signOut()}
+          aria-label="Sign out"
+          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-primary"
+        >
+          <LogOut className="size-4" aria-hidden />
+        </button>
+      </div>
+    </aside>
+  )
 }
