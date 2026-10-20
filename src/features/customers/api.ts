@@ -1,5 +1,5 @@
 import { supabase } from '../../lib/supabase'
-import type { Customer, CustomerFilters } from './types'
+import type { Customer, CustomerFilters, CustomerInput } from './types'
 
 export type CustomersPageData = {
   rows: Customer[]
@@ -33,4 +33,25 @@ export async function getCustomers({
   if (error) throw error
 
   return { rows: data, total: count ?? 0 }
+}export async function createCustomer(input: CustomerInput): Promise<Customer> {
+  const { data, error } = await supabase.from('customers').insert(input).select().single()
+  if (error) throw error
+  return data
 }
+
+export async function updateCustomer(id: string, input: CustomerInput): Promise<Customer> {
+  const { data, error } = await supabase
+    .from('customers')
+    .update(input)
+    .eq('id', id)
+    .select()
+    .single()
+  if (error) throw error
+  return data
+}
+
+export async function deleteCustomer(id: string): Promise<void> {
+  const { error } = await supabase.from('customers').delete().eq('id', id)
+  if (error) throw error
+}
+
