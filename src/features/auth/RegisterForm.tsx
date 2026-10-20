@@ -16,7 +16,10 @@ export function RegisterForm() {
       register,
       handleSubmit,
       formState: { errors, isSubmitting },
-   } = useForm<RegisterValues>({ resolver: zodResolver(registerSchema) })
+   } = useForm<RegisterValues>({
+      resolver: zodResolver(registerSchema),
+      defaultValues: { fullName: '', email: '', password: '', confirmPassword: '' },
+   })
 
    async function onSubmit({ fullName, email, password }: RegisterValues) {
       setServerError(null)
@@ -62,16 +65,16 @@ export function RegisterForm() {
             {...register('email')}
          />
          <PasswordInput
-            label="Password"
-            autoComplete="current-password"
-            error={errors.password?.message}
-            {...register('password')}
+            label="Confirm password"
+            autoComplete="new-password"
+            error={errors.confirmPassword?.message}
+            {...register('confirmPassword')}
          />
          <PasswordInput
-            label="Password"
-            autoComplete="current-password"
-            error={errors.password?.message}
-            {...register('password')}
+            label="Confirm password"
+            autoComplete="new-password"
+            error={errors.confirmPassword?.message}
+            {...register('confirmPassword')}
          />
 
          {serverError && (
