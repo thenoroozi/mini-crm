@@ -55,3 +55,12 @@ export async function deleteCustomer(id: string): Promise<void> {
   if (error) throw error
 }
 
+export async function getCustomer(id: string): Promise<Customer | null> {
+  const { data, error } = await supabase.from('customers').select('*').eq('id', id).maybeSingle()
+  if (error) {
+    // 22P02: the id is not a valid UUID, so no customer can match it.
+    if (error.code === '22P02') return null
+    throw error
+  }
+  return data
+}
