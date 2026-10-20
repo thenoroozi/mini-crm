@@ -11,3 +11,13 @@ const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: '
 export function formatCurrency(value: number): string {
   return currency.format(value)
 }
+const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeStyle: 'short' })
+
+export function formatDate(iso: string): string {
+  return dateFormat.format(new Date(iso))
+}
+
+export function formatDateTime(iso: string): string {
+  return dateTimeFormat.format(new Date(iso))
+}
