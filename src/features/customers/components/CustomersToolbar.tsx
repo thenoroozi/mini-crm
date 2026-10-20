@@ -59,7 +59,7 @@ export function CustomersToolbar({
             placeholder="Search by name, phone or email"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="h-10 w-full rounded-lg border border-line bg-surface pl-9 pr-3 text-sm outline-none placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 sm:w-64"
+            className="h-10 w-full rounded-lg border border-line bg-surface pl-9 pr-3 text-base sm:text-sm outline-none placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 sm:w-64"
           />
         </div>
 
@@ -67,7 +67,7 @@ export function CustomersToolbar({
           aria-label="Filter by status"
           value={status}
           onChange={(e) => onChange({ status: parseStatus(e.target.value) })}
-          className="h-10 rounded-lg border border-line bg-surface px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+          className="h-10 rounded-lg border border-line bg-surface px-3 text-base sm:text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
         >
           <option value="all">All statuses</option>
           <option value="active">Active</option>

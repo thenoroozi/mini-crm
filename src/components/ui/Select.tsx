@@ -28,7 +28,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
         className={cn(
-          'h-10 rounded-lg border bg-surface px-3 text-sm text-ink outline-none transition-colors',
+          'h-10 rounded-lg border bg-surface px-3 text-base sm:text-sm text-ink outline-none transition-colors',
           'focus:border-primary focus:ring-2 focus:ring-primary/20',
           'disabled:cursor-not-allowed disabled:bg-canvas disabled:opacity-60',
           error ? 'border-danger' : 'border-line',

@@ -22,7 +22,7 @@ export function SearchBox() {
         name="q"
         aria-label="Search customers"
         placeholder="Search customers..."
-        className="h-10 w-full rounded-full border border-primary bg-surface pl-10 pr-4 text-sm outline-none placeholder:text-muted focus:ring-2 focus:ring-primary/20"
+        className="h-10 w-full rounded-full border border-primary bg-surface pl-10 pr-4 text-base sm:text-sm outline-none placeholder:text-muted focus:ring-2 focus:ring-primary/20"
       />
     </form>
   )
