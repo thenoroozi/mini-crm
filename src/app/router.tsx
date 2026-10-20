@@ -5,6 +5,7 @@ import { LoginPage } from '../pages/LoginPage'
 import { RegisterPage } from '../pages/RegisterPage'
 import { CustomersPage } from '../pages/CustomersPage'
 import { CustomerDetailPage } from '../pages/CustomerDetailPage'
+import { DashboardPage } from '../pages/DashboardPage'
 
 function Placeholder({ name }: { name: string }) {
   return <p className="text-muted">{name} page</p>
@@ -20,7 +21,7 @@ export function AppRouter() {
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route index element={<Placeholder name="Dashboard" />} />
+          <Route index element={<DashboardPage />} />
           <Route path="customers" element={<CustomersPage />} />
           <Route path="customers/:id" element={<CustomerDetailPage />} />
           <Route path="settings" element={<Placeholder name="Settings" />} />

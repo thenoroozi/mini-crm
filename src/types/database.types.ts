@@ -114,7 +114,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      dashboard_stats: {
+        Args: never
+        Returns: {
+          active_customers: number
+          inactive_customers: number
+          new_last_30_days: number
+          total_customers: number
+          total_revenue: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
