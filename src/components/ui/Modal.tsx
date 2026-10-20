@@ -26,7 +26,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
-      className="m-auto w-full max-w-md rounded-2xl bg-surface p-0 text-ink shadow-card backdrop:bg-ink/40"
+      className="m-auto w-full max-w-md rounded-2xl bg-surface p-0 text-ink shadow-card backdrop:bg-ink/40 max-h-[90dvh] overflow-y-auto"
     >
       {open && (
         <div className="p-6">
