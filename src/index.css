@@ -1,29 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary: #5b4bff;
-  --color-primary-soft: #f0eeff;
-  --color-canvas: #f5f6fb;
-  --color-surface: #ffffff;
-  --color-ink: #171923;
-  --color-muted: #777c8b;
-  --color-line: #e8e9f1;
+   --color-primary: #5b4bff;
+   --color-primary-soft: #f0eeff;
+   --color-canvas: #f5f6fb;
+   --color-surface: #ffffff;
+   --color-ink: #171923;
+   --color-muted: #777c8b;
+   --color-line: #e8e9f1;
 
-  --color-success: #16b364;
-  --color-success-soft: #e8faf0;
-  --color-danger: #e5484d;
-  --color-danger-soft: #fff0f0;
-  --color-warning: #f59e0b;
-  --color-warning-soft: #fff5dd;
-  --color-neutral-soft: #f0f1f4;
+   --color-success: #16b364;
+   --color-success-soft: #e8faf0;
+   --color-danger: #e5484d;
+   --color-danger-soft: #fff0f0;
+   --color-warning: #f59e0b;
+   --color-warning-soft: #fff5dd;
+   --color-neutral-soft: #f0f1f4;
 
-  --shadow-card: 0 5px 20px rgb(36 32 77 / 0.06);
+   --shadow-card: 0 5px 20px rgb(36 32 77 / 0.06);
 }
 
 @layer base {
-  body {
-    @apply bg-canvas font-sans text-ink antialiased;
-  }
+   body {
+      @apply bg-canvas font-sans text-ink antialiased;
+   }
+
+   html {
+      scrollbar-gutter: stable;
+   }
+
+   html:has(dialog[open]) {
+      overflow: hidden;
+   }
 }
