@@ -4,12 +4,13 @@ import { Logo } from './Logo'
 import { SearchBox } from './SearchBox'
 import { getCurrentNavItem } from './navItems'
 import { useAuth } from '../../features/auth/useAuth'
+import { getDisplayName } from '../../features/auth/getDisplayName'
 
 export function Header() {
    const { pathname } = useLocation()
    const current = getCurrentNavItem(pathname)
    const { user } = useAuth()
-   const userName = String(user?.user_metadata?.full_name ?? user?.email ?? 'User')
+   const userName = getDisplayName(user)
 
    return (
       <header className="px-4 pb-5 pt-4 lg:px-8 lg:pb-6 lg:pt-7">

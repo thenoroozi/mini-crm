@@ -6,6 +6,7 @@ import { Avatar } from '../ui/Avatar'
 import { Logo } from './Logo'
 import { sidebarItems } from './navItems'
 import type { NavItem } from './navItems'
+import { getDisplayName } from '../../features/auth/getDisplayName'
 
 const itemBase = 'flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium'
 
@@ -46,7 +47,7 @@ function SidebarItem({ item }: { item: NavItem }) {
 
 export function Sidebar() {
   const { user, signOut } = useAuth()
-  const name = String(user?.user_metadata?.full_name ?? user?.email ?? 'User')
+  const name = getDisplayName(user)
 
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-[188px] flex-col bg-slate-900 px-3 py-6 lg:flex xl:w-[246px] xl:px-4">
