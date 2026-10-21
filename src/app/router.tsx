@@ -6,10 +6,8 @@ import { RegisterPage } from '../pages/RegisterPage'
 import { CustomersPage } from '../pages/CustomersPage'
 import { CustomerDetailPage } from '../pages/CustomerDetailPage'
 import { DashboardPage } from '../pages/DashboardPage'
+import { SettingsPage } from '../pages/SettingsPage'
 
-function Placeholder({ name }: { name: string }) {
-  return <p className="text-muted">{name} page</p>
-}
 
 export function AppRouter() {
   return (
@@ -24,7 +22,7 @@ export function AppRouter() {
           <Route index element={<DashboardPage />} />
           <Route path="customers" element={<CustomersPage />} />
           <Route path="customers/:id" element={<CustomerDetailPage />} />
-          <Route path="settings" element={<Placeholder name="Settings" />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Route>
     </Routes>
