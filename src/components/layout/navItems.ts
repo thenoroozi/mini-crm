@@ -11,10 +11,10 @@ export type NavItem = {
   subtitle: string
 }
 
-const overview: NavItem = {
+const dashboard: NavItem = {
   label: 'Dashboard',
   mobileLabel: 'Home',
-  to: '/',
+  to: '/dashboard',
   icon: LayoutDashboard,
   title: 'Dashboard',
   subtitle: 'Here’s what’s happening with your customers today.',
@@ -55,13 +55,12 @@ export const settings: NavItem = {
   subtitle: 'Manage your profile and preferences.',
 }
 
-export const sidebarItems = [overview, customers, inbox, analytics, settings]
+export const sidebarItems = [dashboard, customers, inbox, analytics, settings]
 
-export const bottomNav = [overview, inbox, customers, analytics, settings]
+export const bottomNav = [dashboard, inbox, customers, analytics, settings]
 
-const allItems = [overview, customers, inbox, analytics, settings]
+const allItems = [dashboard, customers, inbox, analytics, settings]
 
 export function getCurrentNavItem(pathname: string): NavItem {
-  if (pathname === '/') return overview
-  return allItems.find((item) => item.to !== '/' && pathname.startsWith(item.to)) ?? overview
+  return allItems.find((item) => pathname.startsWith(item.to)) ?? dashboard
 }

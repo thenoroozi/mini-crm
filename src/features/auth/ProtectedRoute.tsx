@@ -25,7 +25,7 @@ export function PublicOnlyRoute() {
 
   if (loading) return <FullPageLoader />
   if (session) {
-    const from = (location.state as { from?: string } | null)?.from ?? '/'
+    const from = (location.state as { from?: string } | null)?.from ?? '/dashboard'
     return <Navigate to={from} replace />
   }
   return <Outlet />

@@ -24,7 +24,6 @@ export function BottomNav() {
               ) : (
                 <NavLink
                   to={item.to}
-                  end={item.to === '/'}
                   className={({ isActive }) => cn(base, isActive ? 'text-primary' : 'text-muted')}
                 >
                   <Icon className="size-5" aria-hidden />

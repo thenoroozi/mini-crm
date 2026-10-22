@@ -28,7 +28,6 @@ function SidebarItem({ item }: { item: NavItem }) {
   return (
     <NavLink
       to={item.to}
-      end={item.to === '/'}
       className={({ isActive }) =>
         cn(
           itemBase,
